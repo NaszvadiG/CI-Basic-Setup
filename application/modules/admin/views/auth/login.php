@@ -46,8 +46,12 @@
 					<input type="password" class="form-control login_input" placeholder="<?= lang('password') ?>" name="password" value="Coff1248!EE">
 					<span class="fa fa-lock form-control-feedback"></span>
 				</div>
+				<br>
 				<div class="row">
-					<div class="col-xs-12 col-md-offset-8 col-md-4">
+					<div class="col-xs-12 col-md-8">
+						<a href="<?= site_url('admin/forgot/password') ?>"><?= lang('i_forgot_password') ?></a>
+					</div>
+					<div class="col-xs-12 col-md-4">
 						<button type="button" class="btn btn-primary btn-block btn-flat" id="login-submit"><?= lang('sign_in') ?></button>
 					</div>
 				</div>

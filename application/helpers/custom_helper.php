@@ -239,28 +239,15 @@ if (!function_exists('download_file')) {
 }
 
 if (!function_exists('send_email')) {
-    function send_email($template_name = false, $to_email = false, $subject = false, $config_arr = [], $attachment = false)
+    function send_email($template = false, $to_email = false, $subject = false, $config_arr = [], $attachments = [])
     {
         $CI = &get_instance();
-        $from_email = config_item('from_email');
 
-        // Try to send email
-        $CI->load->library(['parser', 'email']);
-
-        $CI->email->set_mailtype("html");
-
-        $html = $CI->parser->parse("email_templates/{$template_name}", $config_arr, true);
-        $CI->email->from($from_email);
-        $CI->email->to($to_email);
-
-        $CI->email->subject($subject);
-        $CI->email->message($html);
-
-        if ($attachment) {
-            $CI->email->attach($attachment);
-        }
-
-        return $CI->email->send();
+        return $CI->mailer
+            ->to($to_email)
+            ->subject($subject)
+            ->attach($attachments)
+            ->send($template, $config_arr);
     }
 }
 
