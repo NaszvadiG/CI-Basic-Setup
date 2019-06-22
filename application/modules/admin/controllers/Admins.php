@@ -21,7 +21,6 @@ class Admins extends Admin_Controller
             ->join('admin_roles', 'admin_roles.id=admins.role_id')
             ->where('admins.id <>', getSessionUser('id'))
             ->generate();
-
     }
 
     public function create()
