@@ -11,6 +11,12 @@ class Auth extends MX_Controller
 
     public function index()
     {
+        $configArr = [
+            'email' => 'development.vk@hotmail.com',
+            'reset_link' => 'test.com',
+        ];
+        $response = send_email('reset_password_email', $configArr['email'], 'Reset Password', $configArr);
+        dd($response);
         $this->load->view('auth/login');
     }
 
